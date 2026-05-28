@@ -1,0 +1,547 @@
+/* ==========================================================================
+   1. RESETEO DE ESTILOS Y CONFIGURACIÓN BASE
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Permite un deslizamiento suave al usar los enlaces del menú */
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Tipografía base para párrafos y UI */
+    background-color: #F3C5D9; /* Fallback de fondo general */
+    color: #3F3344; /* Color de texto general para asegurar legibilidad */
+    line-height: 1.6;
+}
+
+/* Títulos principales estilizados con la tipografía de acento */
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+/* Estilo estándar para los títulos de cada sección */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #3F3344;
+}
+
+/* ==========================================================================
+   2. HEADER (Fondo Oscuro: #3F3344)
+   ========================================================================== */
+.main-header {
+    background-color: #3F3344;
+    padding: 1rem 2rem;
+    position: sticky; /* Mantiene el menú visible durante el scroll */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Separa el logo a la izquierda y menú a la derecha */
+    align-items: center;
+}
+
+.logo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-logo {
+    height: 75px;     
+    width: auto;     
+    display: block;
+    object-fit: contain;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem; 
+}
+
+.nav-link {
+    color: #E9D7F2; /* Texto claro sobre fondo oscuro */
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1rem;
+    transition: color 0.3s ease; /* Transición para efecto hover refinado */
+}
+
+.nav-link:hover {
+    color: #B497BD; /* Cambio al color de acento en hover */
+}
+
+/* ==========================================================================
+   3. SECCIÓN HERO (Fondo Claro 2: #F3C5D9)
+   ========================================================================== */
+.hero-section {
+    background-color: #F3C5D9;
+    padding: 6rem 2rem;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.hero-content {
+    flex: 1; /* Permite que el bloque de texto tome el espacio proporcional a la izquierda */
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    color: #3F3344;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-family: 'Poppins', sans-serif; /* Subtítulo estilizado con tipografía sans-serif */
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #6B4F71; /* Color medio para jerarquía visual */
+    margin-bottom: 2.5rem;
+}
+
+/* Botón principal adaptado al color de acento #B497BD */
+.btn-primary {
+    display: inline-block;
+    background-color: #B497BD;
+    color: #3F3344;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px; /* Bordes completamente redondeados (estilo píldora) */
+    box-shadow: 0 4px 15px rgba(180, 151, 189, 0.4);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #6B4F71;
+    color: #E9D7F2;
+    transform: translateY(-3px); /* Efecto de elevación sutil */
+    box-shadow: 0 6px 20px rgba(107, 79, 113, 0.4);
+}
+
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-image {
+    width: 400px;
+    height: 400px;
+    object-fit: cover; /* Recorta la imagen proporcionalmente para que encaje perfectamente */
+    object-position: center 20%; /* SUBE O BAJA LA FOTO: Elige valores entre 0% (tope superior) y 100% (tope inferior) */
+    border-radius: 50%; /* Transforma el contenedor en un círculo perfecto */
+    border: 8px solid #E9D7F2; /* Mantiene el borde elegante utilizando el color claro 1 */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   4. SECCIÓN MIS PROYECTOS (Fondo Claro 1: #E9D7F2)
+   ========================================================================== */
+.projects-section {
+    background-color: #E9D7F2;
+    padding: 6rem 2rem;
+}
+
+.projects-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    flex-wrap: wrap; /* Asegura la adaptabilidad en pantallas pequeñas */
+}
+
+.project-card {
+    background-color: #F3C5D9; /* Fondo contrastante usando Claro 2 */
+    flex: 1;
+    min-width: 300px;
+    max-width: 360px;
+    border-radius: 12px; /* Esquinas suavizadas según los requerimientos */
+    overflow: hidden; /* Oculta el excedente de las imágenes con bordes rectos */
+    box-shadow: 0 6px 18px rgba(63, 51, 68, 0.08); /* Sombra sutil solicitada */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(63, 51, 68, 0.15);
+}
+
+.project-thumb {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.project-info {
+    padding: 1.5rem;
+}
+
+.project-title {
+    font-size: 1.4rem;
+    text-align: center;
+    color: #3F3344;
+    margin-bottom: 0.7rem;
+}
+
+.project-description {
+    font-size: 0.95rem;
+    color: #6B4F71;
+}
+
+/* ==========================================================================
+   5. SECCIÓN HABILIDADES Y HERRAMIENTAS (Fondo Claro 2: #F3C5D9)
+   ========================================================================== */
+.skills-section {
+    background-color: #F3C5D9;
+    padding: 6rem 2rem;
+}
+
+.skills-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Simulación de sistema de columnas mediante bloques alineados con tabla para renderizado correcto */
+.skills-left-column {
+    display: block;
+    width: 45%;
+    float: left;
+    margin-right: 5%;
+}
+
+.skills-right-column {
+    display: block;
+    width: 50%;
+    float: left;
+}
+
+/* Limpiador de flujos para asegurar que la sección no pierda su altura real */
+.skills-container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Títulos internos de los bloques */
+.skills-block-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #3F3344;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+}
+
+/* --- ESTILOS DE LA COLUMNA IZQUIERDA (LISTA DE HABILIDADES REFINADA) --- */
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-list li {
+    background-color: #E9D7F2; /* Fondo Claro 1 para resaltar las cajas */
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.15rem; /* Ajuste sutil de margen para equilibrar alturas con la tarjeta derecha */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(63, 51, 68, 0.04);
+    display: block;
+    text-align: center; /* Centra el texto horizontalmente para una estética más limpia */
+}
+
+.skills-list li::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.skill-text {
+    display: inline-block; /* Permite el centrado correcto dentro del contenedor */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #3F3344;
+    font-size: 1.05rem;
+    line-height: 1.4;
+}
+
+/* --- ESTILOS DE LA COLUMNA DERECHA (HERRAMIENTAS Y BARRAS SIN EMOJIS) --- */
+.tools-header {
+    margin-bottom: 0px;
+}
+
+.tools-header .skills-block-title {
+    display: block;
+}
+
+.progress-bars-container {
+    background-color: #E9D7F2; /* Fondo unificado Claro 1 para la tarjeta de herramientas */
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(63, 51, 68, 0.05);
+}
+
+.progress-item {
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.progress-item-last {
+    margin-bottom: 0px;
+}
+
+.progress-info {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.progress-info::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.tool-name {
+    float: left;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #3F3344;
+    font-size: 1rem;
+}
+
+.tool-percentage {
+    float: right;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #6B4F71;
+    font-size: 0.95rem;
+}
+
+/* Contenedor exterior de la barra (Fondo crema de tu captura de referencia) */
+.progress-bar-bg {
+    width: 100%;
+    height: 28px;
+    background-color: #FAF5F5; /* Tono crema idéntico al de tu imagen */
+    border: 2px solid #3F3344; /* Borde oscuro definido */
+    border-radius: 50px;
+    padding: 3px; /* Evita que el relleno choque directamente con el borde exterior */
+    box-sizing: border-box;
+}
+
+/* El relleno morado de la barra de progreso */
+.progress-bar-fill {
+    height: 100%;
+    background-color: #B497BD; /* Color morado/lila de tu paleta corporativa */
+    border-radius: 50px;
+}
+
+/* Responsive: Adaptación para pantallas móviles */
+@media (max-width: 768px) {
+    .skills-left-column,
+    .skills-right-column {
+        width: 100%;
+        float: none;
+        margin-right: 0;
+    }
+    
+    .skills-right-column {
+        margin-top: 3.5rem;
+    }
+}
+
+/* ==========================================================================
+   6. SECCIÓN CONTACTO (Fondo Claro 1: #E9D7F2)
+   ========================================================================== */
+.contact-section {
+    background-color: #E9D7F2;
+    padding: 6rem 2rem;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+.contact-pitch {
+    flex: 1;
+}
+
+.pitch-title {
+    font-size: 2.8rem;
+    color: #3F3344;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.pitch-text {
+    color: #6B4F71;
+    font-size: 1.1rem;
+}
+
+.contact-form-container {
+    flex: 1;
+    background-color: #F3C5D9; /* Fondo contenedor del formulario para contraste */
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(63, 51, 68, 0.06);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #3F3344;
+}
+
+/* Inputs estilizados para interacción amigable */
+.form-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #E9D7F2;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #3F3344;
+    background-color: #E9D7F2;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #B497BD; /* El borde cambia al color de acento al escribir */
+    background-color: #ffffff; /* Brinda claridad focal de escritura */
+}
+
+.text-area {
+    resize: vertical; /* Permite reescalar el tamaño del mensaje manteniendo el ancho estable */
+}
+
+/* Botón de envío usando el color de acento #B497BD */
+.btn-submit {
+    background-color: #B497BD;
+    color: #3F3344;
+    border: none;
+    padding: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(180, 151, 189, 0.3);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #3F3344;
+    color: #E9D7F2;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   7. FOOTER (Fondo Oscuro: #3F3344)
+   ========================================================================== */
+.main-footer {
+    background-color: #3F3344;
+    padding: 3rem 2rem;
+    color: #E9D7F2;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.copyright-text {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+.social-links {
+    display: flex;
+    gap: 2rem; /* Enlaces en fila horizontal uniforme */
+}
+
+.social-icon {
+    color: #B497BD; /* Color inicial llamativo */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #E9D7F2; /* Intercambio armónico al pasar el mouse */
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   8. MEDIA QUERIES (ADAPTABILIDAD MÓVIL)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Quiebre responsivo para estructuras de dos columnas */
+    .hero-container, .contact-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+    }
+    
+    .hero-image-container {
+        order: -1; /* Pone la imagen por encima del texto en teléfonos móviles */
+    }
+
+    .profile-image {
+        width: 280px;
+        height: 280px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .pitch-title {
+        font-size: 2.2rem;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
