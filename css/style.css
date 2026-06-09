@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. RESETEO DE ESTILOS Y CONFIGURACIÓN BASE
+   1. RESETEO DE ESTILOS Y ANIMACIONES BASE
    ========================================================================== */
 * {
     margin: 0;
@@ -8,86 +8,181 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Permite un deslizamiento suave al usar los enlaces del menú */
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Poppins', sans-serif; /* Tipografía base para párrafos y UI */
-    background-color: #F3C5D9; /* Fallback de fondo general */
-    color: #3F3344; /* Color de texto general para asegurar legibilidad */
+    font-family: 'Poppins', sans-serif;
+    background-color: #F3C5D9;
+    color: #3F3344;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Títulos principales estilizados con la tipografía de acento */
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
 }
 
-/* Estilo estándar para los títulos de cada sección */
+/* SISTEMA DE REVELADO DINÁMICO CONTINUO PARA LOS TÍTULOS */
+.reveal-title {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.reveal-title::after {
+    content: '';
+    position: absolute;
+    width: 0%; 
+    height: 4px;
+    background-color: #B497BD;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    transition: width 0.7s cubic-bezier(0.25, 1, 0.5, 1) 0.25s;
+}
+
+.reveal-title.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-title.animated::after {
+    width: 85px; 
+}
+
 .section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-size: 2.8rem;
     color: #3F3344;
+    margin-bottom: 4rem;
+    text-align: center;
+    width: 100%;
+}
+
+.title-wrapper {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loadBar {
+    from { width: 0%; }
+}
+
+@keyframes pulseOnda {
+    0% { box-shadow: 0 0 0 0 rgba(180, 151, 189, 0.7), 0 0 0 0 rgba(233, 215, 242, 0.5); }
+    50% { box-shadow: 0 0 0 25px rgba(180, 151, 189, 0.4), 0 0 0 40px rgba(233, 215, 242, 0.3); }
+    100% { box-shadow: 0 0 0 50px rgba(180, 151, 189, 0), 0 0 0 65px rgba(233, 215, 242, 0); }
+}
+
+@keyframes floatAnim {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes sequenceFiveSlides {
+    0%, 15% { opacity: 1; z-index: 2; }
+    20%, 95% { opacity: 0; z-index: 1; }
+    100% { opacity: 1; z-index: 2; }
+}
+
+@keyframes shineProgress {
+    0% { background-position: -200px 0; }
+    100% { background-position: 200px 0; }
 }
 
 /* ==========================================================================
-   2. HEADER (Fondo Oscuro: #3F3344)
+   2. HEADER & EFECTOS DE NAVEGACIÓN COMPLETA
    ========================================================================== */
 .main-header {
     background-color: #3F3344;
-    padding: 1rem 2rem;
-    position: sticky; /* Mantiene el menú visible durante el scroll */
+    padding: 0.8rem 2rem;
+    position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between; /* Separa el logo a la izquierda y menú a la derecha */
+    justify-content: space-between;
     align-items: center;
-}
-
-.logo-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .site-logo {
-    height: 75px;     
+    height: 70px;     
     width: auto;     
     display: block;
     object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.site-logo:hover {
+    transform: rotate(-3deg) scale(1.05);
 }
 
 .nav-menu {
     display: flex;
-    gap: 2rem; 
+    gap: 2.5rem; 
 }
 
 .nav-link {
-    color: #E9D7F2; /* Texto claro sobre fondo oscuro */
+    color: rgba(233, 215, 242, 0.65);
     text-decoration: none;
     font-weight: 400;
     font-size: 1rem;
-    transition: color 0.3s ease; /* Transición para efecto hover refinado */
+    position: relative;
+    padding-bottom: 6px;
+    transition: color 0.3s ease, transform 0.3s ease, font-weight 0.2s ease;
+    display: inline-block;
+}
+
+.nav-link.active {
+    color: #E9D7F2;
+    font-weight: 600;
+    transform: scale(1.1);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #B497BD;
+    transform-origin: bottom center;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-link.active::after,
+.nav-link:hover::after {
+    transform: scaleX(1);
 }
 
 .nav-link:hover {
-    color: #B497BD; /* Cambio al color de acento en hover */
+    color: #E9D7F2;
 }
 
 /* ==========================================================================
-   3. SECCIÓN HERO (Fondo Claro 2: #F3C5D9)
+   3. SECCIÓN HERO
    ========================================================================== */
 .hero-section {
     background-color: #F3C5D9;
-    padding: 6rem 2rem;
+    padding: 7rem 2rem;
 }
 
 .hero-container {
@@ -100,42 +195,41 @@ h1, h2, h3 {
 }
 
 .hero-content {
-    flex: 1; /* Permite que el bloque de texto tome el espacio proporcional a la izquierda */
+    flex: 1;
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 3.8rem;
     color: #3F3344;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
 }
 
 .hero-subtitle {
-    font-family: 'Poppins', sans-serif; /* Subtítulo estilizado con tipografía sans-serif */
-    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
     font-weight: 300;
-    color: #6B4F71; /* Color medio para jerarquía visual */
-    margin-bottom: 2.5rem;
+    color: #6B4F71;
+    margin-bottom: 3rem;
 }
 
-/* Botón principal adaptado al color de acento #B497BD */
 .btn-primary {
     display: inline-block;
     background-color: #B497BD;
     color: #3F3344;
-    padding: 0.8rem 2rem;
+    padding: 0.9rem 2.5rem;
     text-decoration: none;
     font-weight: 600;
-    border-radius: 50px; /* Bordes completamente redondeados (estilo píldora) */
+    border-radius: 50px;
     box-shadow: 0 4px 15px rgba(180, 151, 189, 0.4);
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #6B4F71;
+    background-color: #3F3344;
     color: #E9D7F2;
-    transform: translateY(-3px); /* Efecto de elevación sutil */
-    box-shadow: 0 6px 20px rgba(107, 79, 113, 0.4);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(63, 51, 68, 0.3);
 }
 
 .hero-image-container {
@@ -144,91 +238,159 @@ h1, h2, h3 {
     justify-content: center;
 }
 
+.profile-avatar-wrapper {
+    position: relative;
+    border-radius: 50%;
+    animation: pulseOnda 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .profile-image {
-    width: 400px;
-    height: 400px;
-    object-fit: cover; /* Recorta la imagen proporcionalmente para que encaje perfectamente */
-    object-position: center 20%; /* SUBE O BAJA LA FOTO: Elige valores entre 0% (tope superior) y 100% (tope inferior) */
-    border-radius: 50%; /* Transforma el contenedor en un círculo perfecto */
-    border: 8px solid #E9D7F2; /* Mantiene el borde elegante utilizando el color claro 1 */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 380px;
+    height: 380px;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 50%;
+    border: 10px solid #E9D7F2;
+    box-shadow: 0 15px 35px rgba(63, 51, 68, 0.15);
+    display: block;
 }
 
 /* ==========================================================================
-   4. SECCIÓN MIS PROYECTOS (Fondo Claro 1: #E9D7F2)
+   4. SECCIÓN PROYECTOS (OPTIMIZADA PARA LIMITAR EL ESPACIO VACÍO SEGÚN REFERENCIA)
    ========================================================================== */
 .projects-section {
     background-color: #E9D7F2;
-    padding: 6rem 2rem;
+    padding: 7rem 0;
+    position: relative;
+}
+
+/* Franja izquierda fija delgada */
+.projects-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 100%;
+    background-image: url('../img/MI Patrón 1-01.png');
+    background-repeat: repeat-y;
+    background-position: left top;
+    background-size: 140px auto; /* Mantiene el monograma "Sm" grande y visible */
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Franja derecha fija delgada */
+.projects-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 100%;
+    background-image: url('../img/MI Patrón 1-01.png');
+    background-repeat: repeat-y;
+    background-position: right top;
+    background-size: 140px auto; /* Mantiene el monograma "Sm" grande y visible */
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .projects-grid {
-    max-width: 1200px;
+    max-width: 1400px; /* Aumentado de 1200px a 1400px para que las tarjetas se abran hacia los lados */
     margin: 0 auto;
+    padding: 0 150px; /* Ajuste ideal de padding para que las tarjetas lleguen justo hasta donde marcaste la línea verde */
     display: flex;
-    gap: 2.5rem;
+    gap: 2.5rem; /* Separación armoniosa entre tarjetas */
     justify-content: center;
-    flex-wrap: wrap; /* Asegura la adaptabilidad en pantallas pequeñas */
+    position: relative;
+    z-index: 5;
 }
 
 .project-card {
-    background-color: #F3C5D9; /* Fondo contrastante usando Claro 2 */
+    background-color: #F3C5D9;
     flex: 1;
-    min-width: 300px;
-    max-width: 360px;
-    border-radius: 12px; /* Esquinas suavizadas según los requerimientos */
-    overflow: hidden; /* Oculta el excedente de las imágenes con bordes rectos */
-    box-shadow: 0 6px 18px rgba(63, 51, 68, 0.08); /* Sombra sutil solicitada */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 280px;
+    max-width: 360px; /* Permite que las tarjetas se ensanchen un poco más llenando el vacío */
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(63, 51, 68, 0.06);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(63, 51, 68, 0.15);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 38px rgba(63, 51, 68, 0.16);
+}
+
+.project-thumb-container {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    background-color: #3F3344;
+}
+
+.slideshow-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 .project-thumb {
     width: 100%;
-    height: 250px;
+    height: 100%;
     object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: sequenceFiveSlides 15s infinite ease-in-out;
 }
 
+.slide-img-1 { animation-delay: 0s; }
+.slide-img-2 { animation-delay: 3s; }
+.slide-img-3 { animation-delay: 6s; }
+.slide-img-4 { animation-delay: 9s; }
+.slide-img-5 { animation-delay: 12s; }
+
 .project-info {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
 }
 
 .project-title {
-    font-size: 1.4rem;
-    text-align: center;
+    font-size: 1.5rem;
     color: #3F3344;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.8rem;
 }
 
 .project-description {
     font-size: 0.95rem;
     color: #6B4F71;
+    line-height: 1.5;
 }
 
 /* ==========================================================================
-   5. SECCIÓN HABILIDADES Y HERRAMIENTAS (Fondo Claro 2: #F3C5D9)
+   5. SECCIÓN HABILIDADES
    ========================================================================== */
 .skills-section {
     background-color: #F3C5D9;
-    padding: 6rem 2rem;
+    padding: 7rem 2rem;
 }
 
 .skills-container {
     max-width: 1200px;
     margin: 0 auto;
-    display: block;
 }
 
-/* Simulación de sistema de columnas mediante bloques alineados con tabla para renderizado correcto */
 .skills-left-column {
     display: block;
-    width: 45%;
+    width: 46%;
     float: left;
-    margin-right: 5%;
+    margin-right: 4%;
 }
 
 .skills-right-column {
@@ -237,73 +399,97 @@ h1, h2, h3 {
     float: left;
 }
 
-/* Limpiador de flujos para asegurar que la sección no pierda su altura real */
 .skills-container::after {
     content: "";
     display: table;
     clear: both;
 }
 
-/* Títulos internos de los bloques */
+.block-header-center {
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
 .skills-block-title {
-    font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
     color: #3F3344;
     margin-bottom: 2.5rem;
-    font-weight: 700;
+    display: inline-block;
 }
 
-/* --- ESTILOS DE LA COLUMNA IZQUIERDA (LISTA DE HABILIDADES REFINADA) --- */
-.skills-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.skills-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 }
 
-.skills-list li {
-    background-color: #E9D7F2; /* Fondo Claro 1 para resaltar las cajas */
-    padding: 1.2rem 1.5rem;
-    margin-bottom: 1.15rem; /* Ajuste sutil de margen para equilibrar alturas con la tarjeta derecha */
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(63, 51, 68, 0.04);
-    display: block;
-    text-align: center; /* Centra el texto horizontalmente para una estética más limpia */
+.accordion-item {
+    background-color: #3F3344;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(63, 51, 68, 0.12);
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    border: 1px solid rgba(180, 151, 189, 0.2);
 }
 
-.skills-list li::after {
-    content: "";
-    display: table;
-    clear: both;
+.accordion-item[open] {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(63, 51, 68, 0.25);
+    border-color: #B497BD;
 }
 
-.skill-text {
-    display: inline-block; /* Permite el centrado correcto dentro del contenedor */
-    font-family: 'Poppins', sans-serif;
+.accordion-trigger {
+    padding: 1.3rem 1.6rem;
     font-weight: 600;
+    color: #E9D7F2;
+    font-size: 1.1rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+    user-select: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.accordion-trigger::-webkit-details-marker {
+    display: none;
+}
+
+.accordion-trigger::after {
+    content: '▼';
+    position: absolute;
+    right: 1.6rem;
+    font-size: 0.8rem;
+    color: #B497BD;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.accordion-item[open] .accordion-trigger::after {
+    transform: rotate(-180deg);
+    color: #F3C5D9;
+}
+
+.accordion-content {
+    background-color: #E9D7F2;
+    padding: 1.4rem 1.6rem;
+    border-top: 2px solid #B497BD;
+    font-size: 0.98rem;
     color: #3F3344;
-    font-size: 1.05rem;
-    line-height: 1.4;
+    animation: fadeInUp 0.4s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 
-/* --- ESTILOS DE LA COLUMNA DERECHA (HERRAMIENTAS Y BARRAS SIN EMOJIS) --- */
-.tools-header {
-    margin-bottom: 0px;
-}
-
-.tools-header .skills-block-title {
-    display: block;
-}
-
+/* HERRAMIENTAS */
 .progress-bars-container {
-    background-color: #E9D7F2; /* Fondo unificado Claro 1 para la tarjeta de herramientas */
+    background-color: #E9D7F2;
     padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(63, 51, 68, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(63, 51, 68, 0.05);
 }
 
 .progress-item {
     margin-bottom: 1.5rem;
-    display: block;
 }
 
 .progress-item-last {
@@ -311,8 +497,7 @@ h1, h2, h3 {
 }
 
 .progress-info {
-    display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
 }
 
 .progress-info::after {
@@ -323,66 +508,55 @@ h1, h2, h3 {
 
 .tool-name {
     float: left;
-    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: #3F3344;
-    font-size: 1rem;
 }
 
 .tool-percentage {
     float: right;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     color: #6B4F71;
-    font-size: 0.95rem;
 }
 
-/* Contenedor exterior de la barra (Fondo crema de tu captura de referencia) */
 .progress-bar-bg {
     width: 100%;
-    height: 28px;
-    background-color: #FAF5F5; /* Tono crema idéntico al de tu imagen */
-    border: 2px solid #3F3344; /* Borde oscuro definido */
+    height: 26px;
+    background-color: #3F3344;
+    border: 2px solid #3F3344;
     border-radius: 50px;
-    padding: 3px; /* Evita que el relleno choque directamente con el borde exterior */
+    padding: 3px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
-/* El relleno morado de la barra de progreso */
 .progress-bar-fill {
     height: 100%;
-    background-color: #B497BD; /* Color morado/lila de tu paleta corporativa */
+    background-image: linear-gradient(90deg, #B497BD 0%, #F3C5D9 50%, #B497BD 100%);
+    background-size: 200px 100%;
     border-radius: 50px;
+    animation: loadBar 1.5s cubic-bezier(0.25, 1, 0.5, 1) both, shineProgress 2s infinite linear;
 }
 
-/* Responsive: Adaptación para pantallas móviles */
-@media (max-width: 768px) {
-    .skills-left-column,
-    .skills-right-column {
-        width: 100%;
-        float: none;
-        margin-right: 0;
-    }
-    
-    .skills-right-column {
-        margin-top: 3.5rem;
-    }
-}
+.fill-canva { width: 80%; }
+.fill-krita { width: 70%; }
+.fill-capcut { width: 50%; }
+.fill-illustrator { width: 60%; }
+.fill-photoshop { width: 30%; }
 
 /* ==========================================================================
-   6. SECCIÓN CONTACTO (Fondo Claro 1: #E9D7F2)
+   6. SECCIÓN CONTACTO
    ========================================================================== */
 .contact-section {
     background-color: #E9D7F2;
-    padding: 6rem 2rem;
+    padding: 7rem 2rem;
 }
 
 .contact-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    gap: 4rem;
-    align-items: flex-start;
+    gap: 5rem;
+    align-items: center;
 }
 
 .contact-pitch {
@@ -390,7 +564,7 @@ h1, h2, h3 {
 }
 
 .pitch-title {
-    font-size: 2.8rem;
+    font-size: 3rem;
     color: #3F3344;
     line-height: 1.2;
     margin-bottom: 1.5rem;
@@ -401,78 +575,80 @@ h1, h2, h3 {
     font-size: 1.1rem;
 }
 
-.contact-form-container {
+.floating-card {
     flex: 1;
-    background-color: #F3C5D9; /* Fondo contenedor del formulario para contraste */
-    padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(63, 51, 68, 0.06);
+    background-color: #F3C5D9;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(63, 51, 68, 0.08);
+    animation: floatAnim 5s infinite ease-in-out;
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.5rem;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
 }
 
 .form-label {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: #3F3344;
 }
 
-/* Inputs estilizados para interacción amigable */
 .form-input {
     width: 100%;
-    padding: 0.8rem 1rem;
+    padding: 0.9rem 1.2rem;
     border: 2px solid #E9D7F2;
-    border-radius: 6px;
+    border-radius: 8px;
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
     color: #3F3344;
     background-color: #E9D7F2;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .form-input:focus {
     outline: none;
-    border-color: #B497BD; /* El borde cambia al color de acento al escribir */
-    background-color: #ffffff; /* Brinda claridad focal de escritura */
+    border-color: #3F3344;
+    background-color: #ffffff;
+    box-shadow: 0 0 14px rgba(63, 51, 68, 0.15);
+    transform: scale(1.01) translateX(3px);
 }
 
 .text-area {
-    resize: vertical; /* Permite reescalar el tamaño del mensaje manteniendo el ancho estable */
+    resize: vertical;
 }
 
-/* Botón de envío usando el color de acento #B497BD */
 .btn-submit {
     background-color: #B497BD;
     color: #3F3344;
     border: none;
-    padding: 1rem;
+    padding: 1.1rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 1rem;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(180, 151, 189, 0.3);
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(180, 151, 189, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .btn-submit:hover {
     background-color: #3F3344;
     color: #E9D7F2;
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(63, 51, 68, 0.25);
 }
 
 /* ==========================================================================
-   7. FOOTER (Fondo Oscuro: #3F3344)
+   7. FOOTER
    ========================================================================== */
 .main-footer {
     background-color: #3F3344;
@@ -484,9 +660,45 @@ h1, h2, h3 {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
+}
+
+.footer-left-action {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.back-to-top-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    background-color: #B497BD;
+    color: #3F3344;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: bold;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-to-top-btn:hover {
+    background-color: #E9D7F2;
+    color: #3F3344;
+    transform: translateY(-6px);
+}
+
+.footer-center-content {
+    flex: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .copyright-text {
@@ -496,44 +708,85 @@ h1, h2, h3 {
 
 .social-links {
     display: flex;
-    gap: 2rem; /* Enlaces en fila horizontal uniforme */
+    gap: 2.5rem;
+    justify-content: center;
 }
 
 .social-icon {
-    color: #B497BD; /* Color inicial llamativo */
+    color: #B497BD;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.95rem;
-    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
 .social-icon:hover {
-    color: #E9D7F2; /* Intercambio armónico al pasar el mouse */
-    transform: scale(1.1);
+    color: #E9D7F2;
+}
+
+.footer-right-logo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-logo-link:hover {
+    transform: rotate(-3deg) scale(1.05);
 }
 
 /* ==========================================================================
-   8. MEDIA QUERIES (ADAPTABILIDAD MÓVIL)
+   8. MEDIA QUERIES (RESPONSIVE)
    ========================================================================== */
+@media (max-width: 1200px) {
+    .projects-section::before,
+    .projects-section::after {
+        display: none;
+    }
+    .projects-grid {
+        padding: 0 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .project-card {
+        max-width: 340px;
+        min-width: 280px;
+    }
+}
+
 @media (max-width: 768px) {
-    /* Quiebre responsivo para estructuras de dos columnas */
-    .hero-container, .contact-container {
+    .skills-left-column,
+    .skills-right-column {
+        width: 100%;
+        float: none;
+        margin-right: 0;
+    }
+    
+    .skills-right-column {
+        margin-top: 3.5rem;
+    }
+
+    .hero-container, .contact-container, .footer-container {
         flex-direction: column;
         text-align: center;
         gap: 3rem;
     }
     
+    .footer-left-action, .footer-right-logo {
+        justify-content: center;
+    }
+    
     .hero-image-container {
-        order: -1; /* Pone la imagen por encima del texto en teléfonos móviles */
+        order: -1;
     }
 
     .profile-image {
-        width: 280px;
-        height: 280px;
+        width: 290px;
+        height: 290px;
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.6rem;
     }
 
     .pitch-title {
@@ -542,6 +795,6 @@ h1, h2, h3 {
 
     .header-container {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.2rem;
     }
 }

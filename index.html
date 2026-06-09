@@ -19,182 +19,291 @@
             </a>
         </div>
         <nav class="nav-menu">
-            <a href="#inicio" class="nav-link">Inicio</a>
-            <a href="#sobre-mi" class="nav-link">Sobre mí</a>
-            <a href="#proyectos" class="nav-link">Proyectos</a>
-            <a href="#contacto" class="nav-link">Contacto</a>
+            <a href="#inicio" class="nav-link" data-nav="inicio">Inicio</a>
+            <a href="#proyectos" class="nav-link" data-nav="proyectos">Proyectos</a>
+            <a href="#sobre-mi" class="nav-link" data-nav="sobre-mi">Sobre mí</a>
+            <a href="#contacto" class="nav-link" data-nav="contacto">Contacto</a>
         </nav>
     </div>
 </header>
 
-    <main>
-        <section id="inicio" class="hero-section">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1 class="hero-title">Hola, soy Adriana Anamá</h1>
-                    <h2 class="hero-subtitle">Multimedia y Producción Audiovisual</h2>
-                    <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+<main>
+    <!-- Sección Principal (Inicio) -->
+    <section id="inicio" class="hero-section target-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title reveal-title">Hola, soy Adriana Anamá</h1>
+                <h2 class="hero-subtitle">Multimedia y Producción Audiovisual</h2>
+                <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+            </div>
+            <div class="hero-image-container">
+                <div class="profile-avatar-wrapper">
+                    <img src="img/Foto Perfil.png" alt="Foto de perfil de Adriana Anamá" class="profile-image">
                 </div>
-                <div class="hero-image-container">
-                    <img src="img/Foto Perfil.png" alt="Foto de perfil de Lorem Ipsum" class="profile-image" >
-                </div>
             </div>
-        </section>
-
-<section id="proyectos" class="projects-section">
-    <h2 class="section-title">Mis Proyectos</h2>
-    <div class="projects-grid">
-        
-        <article class="project-card">
-            <img src="img/Proyecto Ilustración.jpg" alt="Miniatura de Proyecto de Ilustración" class="project-thumb">
-            <div class="project-info">
-                <h3 class="project-title">Ilustración</h3>
-                <p class="project-description">Dibujo digital, diseño de personajes y mucha creatividad. Un espacio donde mis ideas toman forma y color cuadro por cuadro.</p>
-            </div>
-        </article>
-        
-        <article class="project-card">
-            <img src="img/Proyecto DIseño.jpg" alt="Miniatura de Proyecto de Diseño" class="project-thumb">
-            <div class="project-info">
-                <h3 class="project-title">Diseño</h3>
-                <p class="project-description">Estructura, colores y tipografías en perfecta armonía. Diseño interfaces y marcas pensadas para conectar con las personas de forma clara.</p>
-            </div>
-        </article>
-        
-        <article class="project-card">
-            <img src="img/Proyecto Fotografía.jpg" alt="Miniatura de Proyecto de Fotografía" class="project-thumb">
-            <div class="project-info">
-                <h3 class="project-title">Fotografía</h3>
-                <p class="project-description">Mirando los detalles que otros pasan por alto. Me enfoco en capturar la esencia de los lugares usando reglas de composición y buen contraste.</p>
-            </div>
-        </article>
-
-    </div>
-</section>
-
-<section id="sobre-mi" class="skills-section">
-    <div class="skills-container">
-        
-        <div class="skills-left-column">
-            <h2 class="skills-block-title">Mis Habilidades</h2>
-            <ul class="skills-list">
-                <li>
-                    <span class="skill-text">Asistente de Cámara</span>
-                </li>
-                <li>
-                    <span class="skill-text">Asistente de Iluminación</span>
-                </li>
-                <li>
-                    <span class="skill-text">Organización Visual de Contenido</span>
-                </li>
-                <li>
-                    <span class="skill-text">Pensamiento Creativo</span>
-                </li>
-                <li>
-                    <span class="skill-text">Ilustración</span>
-                </li>
-            </ul>
         </div>
+    </section>
 
-        <div class="skills-right-column">
-            <div class="tools-header">
-                <h2 class="skills-block-title">Herramientas</h2>
-            </div>
+    <!-- Sección Proyectos -->
+    <section id="proyectos" class="projects-section target-section">
+        <div class="title-wrapper">
+            <h2 class="section-title reveal-title">Mis Proyectos</h2>
+        </div>
+        <div class="projects-grid">
             
-            <div class="progress-bars-container">
-                <div class="progress-item">
-                    <div class="progress-info">
-                        <span class="tool-name">Canva</span>
-                        <span class="tool-percentage">80%</span>
-                    </div>
-                    <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 80%;"></div>
-                    </div>
-                </div>
-
-                <div class="progress-item">
-                    <div class="progress-info">
-                        <span class="tool-name">Krita</span>
-                        <span class="tool-percentage">70%</span>
-                    </div>
-                    <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 70%;"></div>
+            <!-- Tarjeta 1: Ilustración -->
+            <article class="project-card">
+                <div class="project-thumb-container">
+                    <div class="slideshow-track">
+                        <img src="img/Proyecto Ilustración.jpg" alt="Ilustración 1" class="project-thumb slide-img-1">
+                        <img src="img/Proyecto Ilustración 2.jpg" alt="Ilustración 2" class="project-thumb slide-img-2">
+                        <img src="img/Proyecto Ilustración 3.jpg" alt="Ilustración 3" class="project-thumb slide-img-3">
+                        <img src="img/Proyecto Ilustración 4.jpg" alt="Ilustración 4" class="project-thumb slide-img-4">
+                        <img src="img/Proyecto Ilustración 5.jpg" alt="Ilustración 5" class="project-thumb slide-img-5">
                     </div>
                 </div>
-
-                <div class="progress-item">
-                    <div class="progress-info">
-                        <span class="tool-name">CapCut</span>
-                        <span class="tool-percentage">50%</span>
-                    </div>
-                    <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 50%;"></div>
+                <div class="project-info">
+                    <h3 class="project-title">Ilustración</h3>
+                    <p class="project-description">Dibujo digital, diseño de personajes y mucha creatividad. Un espacio donde mis ideas toman forma y color cuadro por cuadro.</p>
+                </div>
+            </article>
+            
+            <!-- Tarjeta 2: Diseño -->
+            <article class="project-card">
+                <div class="project-thumb-container">
+                    <div class="slideshow-track">
+                        <img src="img/Proyecto DIseño.jpg" alt="Diseño 1" class="project-thumb slide-img-1">
+                        <img src="img/Proyecto Diseño 2.jpg" alt="Diseño 2" class="project-thumb slide-img-2">
+                        <img src="img/Proyecto Diseño 3.jpg" alt="Diseño 3" class="project-thumb slide-img-3">
+                        <img src="img/Proyecto Diseño 4.jpg" alt="Diseño 4" class="project-thumb slide-img-4">
+                        <img src="img/Proyecto Diseño 5.jpg" alt="Diseño 5" class="project-thumb slide-img-5">
                     </div>
                 </div>
-
-                <div class="progress-item">
-                    <div class="progress-info">
-                        <span class="tool-name">Adobe Ilustrator</span>
-                        <span class="tool-percentage">60%</span>
-                    </div>
-                    <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 60%;"></div>
+                <div class="project-info">
+                    <h3 class="project-title">Diseño</h3>
+                    <p class="project-description">Estructura, colores y tipografías en perfecta armonía. Diseño interfaces y marcas pensadas para conectar con las personas de forma clara.</p>
+                </div>
+            </article>
+            
+            <!-- Tarjeta 3: Fotografía -->
+            <article class="project-card">
+                <div class="project-thumb-container">
+                    <div class="slideshow-track">
+                        <img src="img/Proyecto Fotografía.jpg" alt="Fotografía 1" class="project-thumb slide-img-1">
+                        <img src="img/Proyecto Fotografía 2.jpg" alt="Fotografía 2" class="project-thumb slide-img-2">
+                        <img src="img/Proyecto Fotografía 3.jpg" alt="Fotografía 3" class="project-thumb slide-img-3">
+                        <img src="img/Proyecto Fotografía 4.jpg" alt="Fotografía 4" class="project-thumb slide-img-4">
+                        <img src="img/Proyecto Fotografía 5.jpg" alt="Fotografía 5" class="project-thumb slide-img-5">
                     </div>
                 </div>
+                <div class="project-info">
+                    <h3 class="project-title">Fotografía</h3>
+                    <p class="project-description">Mirando los detalles que otros pasan por alto. Me enfoco en capturar la esencia de los lugares usando reglas de composición y buen contraste.</p>
+                </div>
+            </article>
 
-                <div class="progress-item">
-                    <div class="progress-item-last">
+        </div>
+    </section>
+
+    <!-- Sección Habilidades & Herramientas -->
+    <section id="sobre-mi" class="skills-section target-section">
+        <div class="skills-container">
+            
+            <!-- Columna Izquierda: Habilidades -->
+            <div class="skills-left-column">
+                <div class="block-header-center">
+                    <h2 class="skills-block-title reveal-title">Mis Habilidades</h2>
+                </div>
+                <div class="skills-accordion">
+                    
+                    <details class="accordion-item" name="habilidades">
+                        <summary class="accordion-trigger">Asistente de Cámara</summary>
+                        <div class="accordion-content">
+                            <p>Soporte técnico y operativo en el set. Me encargo del montaje preciso de ópticas, control de enfoque y resguardo del equipo para garantizar tomas nítidas y fluidas.</p>
+                        </div>
+                    </details>
+
+                    <details class="accordion-item" name="habilidades">
+                        <summary class="accordion-trigger">Asistente de Iluminación</summary>
+                        <div class="accordion-content">
+                            <p>Modelado de la luz para construir atmósferas. Colaboro en el posicionamiento de esquemas lumínicos, difusores y rebotadores para dar volumen y dramatismo a la escena.</p>
+                        </div>
+                    </details>
+
+                    <details class="accordion-item" name="habilidades">
+                        <summary class="accordion-trigger">Organización Visual de Contenido</summary>
+                        <div class="accordion-content">
+                            <p>Estructuración lógica de elementos gráficos. Distribuyo la información con un sentido estético riguroso para jerarquizar el mensaje y facilitar su lectura visual.</p>
+                        </div>
+                    </details>
+
+                    <details class="accordion-item" name="habilidades">
+                        <summary class="accordion-trigger">Pensamiento Creativo</summary>
+                        <div class="accordion-content">
+                            <p>Solución conceptual a retos de comunicación. Transformo ideas abstractas en narrativas visuales originales que logran conectar con las emociones del espectador.</p>
+                        </div>
+                    </details>
+
+                    <details class="accordion-item" name="habilidades">
+                        <summary class="accordion-trigger">Ilustración</summary>
+                        <div class="accordion-content">
+                            <p>Creación de mundos e identidades a nivel digital. Domino el trazo, la teoría del color y la composición anatómica para dar vida a personajes y bocetos con estilo único.</p>
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Herramientas -->
+            <div class="skills-right-column">
+                <div class="block-header-center">
+                    <h2 class="skills-block-title reveal-title">Herramientas</h2>
+                </div>
+                
+                <div class="progress-bars-container">
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span class="tool-name">Canva</span>
+                            <span class="tool-percentage">80%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill fill-canva"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span class="tool-name">Krita</span>
+                            <span class="tool-percentage">70%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill fill-krita"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span class="tool-name">CapCut</span>
+                            <span class="tool-percentage">50%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill fill-capcut"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span class="tool-name">Adobe Illustrator</span>
+                            <span class="tool-percentage">60%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill fill-illustrator"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item progress-item-last">
                         <div class="progress-info">
                             <span class="tool-name">Adobe Photoshop</span>
                             <span class="tool-percentage">30%</span>
                         </div>
                         <div class="progress-bar-bg">
-                            <div class="progress-bar-fill" style="width: 30%;"></div>
+                            <div class="progress-bar-fill fill-photoshop"></div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+    </section>
 
-    </div>
-</section>
-
-        <section id="contacto" class="contact-section">
-            <div class="contact-container">
-                <div class="contact-pitch">
-                    <h2 class="pitch-title">¿Tienes un proyecto en mente?</h2>
-                    <p class="pitch-text">¡Hagámoslo realidad! Estoy lista para aportar toda mi creatividad en tus proyectos audiovisuales, de diseño o ilustración. Escríbeme y encontremos juntos la mejor forma de contar tu historia.</p>
-                </div>
-                <div class="contact-form-container">
-                    <form action="https://formspree.io/f/mykvrojw" method="POST" class="contact-form">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Nombre</label>
-                            <input type="text" id="name" name="name" class="form-input" placeholder="Nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Correo</label>
-                            <input type="email" id="email" name="email" class="form-input" placeholder="Correo Electrónico" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Mensaje</label>
-                            <textarea id="message" name="message" rows="5" class="form-input text-area" placeholder="Mensaje" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit">Enviar mensaje</button>
-                    </form>
-                </div>
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contact-section target-section">
+        <div class="contact-container">
+            <div class="contact-pitch">
+                <h2 class="pitch-title reveal-title">¿Tienes un proyecto en mente?</h2>
+                <p class="pitch-text">¡Hagámoslo realidad! Estoy lista para aportar toda mi creatividad en tus proyectos audiovisuales, de diseño o ilustración. Escríbeme y encontremos juntos la mejor forma de contar tu historia.</p>
             </div>
-        </section>
-    </main>
+            <div class="contact-form-container floating-card">
+                <form action="https://formspree.io/f/mykvrojw" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Correo</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Correo Electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" class="form-input text-area" placeholder="Mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
 
-    <footer class="main-footer">
-        <div class="footer-container">
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-left-action">
+            <a href="#inicio" class="back-to-top-btn" title="Volver al inicio">↑</a>
+        </div>
+        
+        <div class="footer-center-content">
             <p class="copyright-text">&copy; 2026 Adriana Anamá. Todos los derechos reservados.</p>
             <div class="social-links">
                 <a href="https://www.instagram.com/mileanama/" target="_blank" class="social-icon">Instagram</a>
                 <a href="https://www.behance.net/milenaanam" target="_blank" class="social-icon">Behance</a>
             </div>
         </div>
-    </footer>
+
+        <div class="footer-right-logo">
+            <a href="#inicio">
+                <img src="img/Mi Logo.png" alt="Mi Marca Personal - Volver arriba" class="site-logo footer-logo-link">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll(".target-section");
+        const navLinks = document.querySelectorAll(".nav-link");
+        const revealTitles = document.querySelectorAll(".reveal-title");
+
+        // 1. EFECTO ACTIVO EN MENÚ SUPERIOR POR SCROLL
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute("id");
+                    navLinks.forEach(link => {
+                        if (link.getAttribute("href") === `#${id}`) {
+                            link.classList.add("active");
+                        } else {
+                            link.classList.remove("active");
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.3, rootMargin: "-10% 0px -50% 0px" });
+
+        sections.forEach(section => navObserver.observe(section));
+
+        // 2. EFECTO REPETITIVO EN TÍTULOS AL SUBIR Y BAJAR (SCROLL ENTRADA/SALIDA)
+        const titleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animated");
+                } else {
+                    entry.target.classList.remove("animated");
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+        revealTitles.forEach(title => titleObserver.observe(title));
+    });
+</script>
 
 </body>
 </html>
